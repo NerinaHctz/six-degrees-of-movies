@@ -1,0 +1,64 @@
+.game-board {
+    padding: 20px;
+}
+
+.actors-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.movies-list {
+    margin-top: 20px;
+}
+
+.movies-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.movies-list li {
+    list-style: none;
+    width: 100px;
+    /* Ajusta el tamaño según sea necesario */
+    text-align: center;
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.selected-movie {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.actors-in-movie ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.actors-in-movie li {
+    list-style: none;
+    width: 80px;
+    /* Ajusta el tamaño según sea necesario */
+    text-align: center;
+    cursor: pointer;
+    /* Cambiar el cursor al pasar sobre el actor */
+}
+
+.actor-image {
+    width: 100%;
+    height: auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
