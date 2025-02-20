@@ -1,11 +1,19 @@
-import React from 'react'
-import GameBoard from './components/gameBoard/GameBoard'
+import React, { useState } from 'react';
+import Home from './components/home/Home';
+import GameBoard from './components/gameBoard/GameBoard';
 
-function App() {
-  return <div className="App">
-    <h1>Six Degrees of Movies</h1>
-    <GameBoard />
-  </div>
-}
+const App = () => {
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
-export default App
+  const handleStartGame = () => {
+    setIsGameStarted(true);
+  };
+
+  return (
+    <div className="app">
+      {isGameStarted ? <GameBoard /> : <Home onStart={handleStartGame} />}
+    </div>
+  );
+};
+
+export default App;

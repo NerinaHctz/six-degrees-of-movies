@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import ActorCard from '../actorCard/ActorCard'
-import MovieCard from '../movieCard/MovieCard'
-import { getMoviesOfActor } from '../../utils/getMoviesOfActor.js'
-import { getActorInfoFromMovie } from '../../utils/getActorInfoFromMovie.js'
-import { getRandomActors } from '../../utils/getRandomActors.js'
-import { createPath } from '../../utils/helpers/createPath.js'
-import { buildMoviesGraph } from '../../utils/helpers/buildMoviesGraph.js'
-import { formatActorName } from '../../utils/helpers/formatActorName.js'
-import './GameBoard.scss'
+import React, { useState, useEffect } from 'react';
+import ActorCard from '../actorCard/ActorCard';
+import MovieCard from '../movieCard/MovieCard';
+import { getMoviesOfActor } from '../../utils/getMoviesOfActor.js';
+import { getActorInfoFromMovie } from '../../utils/getActorInfoFromMovie.js';
+import { getRandomActors } from '../../utils/getRandomActors.js';
+import { createPath } from '../../utils/helpers/createPath.js';
+import { buildMoviesGraph } from '../../utils/helpers/buildMoviesGraph.js';
+import { formatActorName } from '../../utils/helpers/formatActorName.js';
+import './GameBoard.scss';
 
 const GameBoard = () => {
     const [actor1, setActor1] = useState(null);
@@ -19,13 +19,18 @@ const GameBoard = () => {
     const [showActors, setShowActors] = useState(false);
     const [level, setLevel] = useState(1); // Nivel inicial
     const [selectedActor, setSelectedActor] = useState(null); // Actor seleccionado
+    const [isRolling, setIsRolling] = useState(false);
 
     const fetchRandomActors = () => {
-        getRandomActors(level).then(([randomActor1, randomActor2]) => {
-            setActor1(randomActor1);
-            setActor2(randomActor2);
-            setShowActors(true);
-        });
+        setIsRolling(true);
+        setTimeout(() => {
+            getRandomActors(level).then(([randomActor1, randomActor2]) => {
+                setActor1(randomActor1);
+                setActor2(randomActor2);
+                setShowActors(true);
+                setIsRolling(false);
+            });
+        }, 1000); // Duración de la animación en milisegundos
     };
 
     useEffect(() => {
@@ -64,7 +69,9 @@ const GameBoard = () => {
     return (
         <div className="game-board">
             <h2>Actores seleccionados</h2>
-            <button onClick={fetchRandomActors}>Obtener Actores Aleatorios</button>
+            <button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
+                <img src="/icon/dados.png" alt="Obtener Actores Aleatorios" />
+            </button>
             <div className="actors-container">
                 {showActors && actor1 && <ActorCard actor={actor1} onActorSelect={onActorSelect} />}
                 {showActors && actor2 && <ActorCard actor={actor2} onActorSelect={onActorSelect} />}
@@ -108,4 +115,4 @@ const GameBoard = () => {
     );
 };
 
-export default GameBoard
+export default GameBoard;
