@@ -2,6 +2,31 @@
     padding: 20px;
 }
 
+.dice-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dice-button img {
+    width: 50px; // Ajusta el tamaño según tus necesidades
+    height: auto;
+}
+
+.dice-button.rolling img {
+    animation: roll 1s infinite;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .actors-container {
     display: flex;
     justify-content: space-between;
