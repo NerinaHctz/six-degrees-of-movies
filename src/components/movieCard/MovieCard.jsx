@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import './MovieCard.scss';
+import React from 'react'
+import './MovieCard.scss'
 
 const MovieCard = ({ movie, actors, onActorSelect }) => {
-    const moviePosterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
-    const defaultPosterUrl = 'path/to/default-poster.jpg'; // Ruta al icono predeterminado para el poster
-    const defaultActorUrl = 'path/to/default-actor.jpg'; // Ruta al icono predeterminado para el actor
+    const moviePosterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+    const defaultPosterUrl = 'path/to/default-poster.jpg'
+    const defaultActorUrl = 'path/to/default-actor.jpg'
 
     return (
         <div className="movie-card">
@@ -13,7 +13,7 @@ const MovieCard = ({ movie, actors, onActorSelect }) => {
                 src={moviePosterUrl}
                 alt={movie.title}
                 className="movie-card__poster"
-                onError={(e) => e.target.src = defaultPosterUrl} // Manejo de error
+                onError={(e) => e.target.src = defaultPosterUrl}
             />
             <div className="movie-card__actors">
                 <h4>Actores en la película:</h4>
@@ -24,7 +24,7 @@ const MovieCard = ({ movie, actors, onActorSelect }) => {
                                 src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
                                 alt={actor.name}
                                 className="actor-image"
-                                onError={(e) => e.target.src = defaultActorUrl} // Manejo de error
+                                onError={(e) => e.target.src = defaultActorUrl}
                             />
                             {actor.name}
                         </li>
@@ -32,7 +32,7 @@ const MovieCard = ({ movie, actors, onActorSelect }) => {
                 </ul>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default MovieCard

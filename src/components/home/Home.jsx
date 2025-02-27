@@ -1,5 +1,5 @@
-import React from 'react';
-import './Home.scss';
+import React from 'react'
+import './Home.scss'
 
 const Home = ({ onStart }) => {
     return (
@@ -21,7 +21,7 @@ const Home = ({ onStart }) => {
             </ul>
             <button onClick={onStart}>Empezar el juego</button>
         </div>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home
