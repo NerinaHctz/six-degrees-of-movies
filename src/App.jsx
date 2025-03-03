@@ -9,11 +9,9 @@ const App = () => {
     setIsGameStarted(true)
   };
 
-  return (
-    <div className="app">
-      {isGameStarted ? <GameBoard /> : <Home onStart={handleStartGame} />}
-    </div>
-  )
+  return <div className="app">
+    {isGameStarted ? <GameBoard /> : <Home onStart={handleStartGame} />}
+  </div>
 }
 
 export default App

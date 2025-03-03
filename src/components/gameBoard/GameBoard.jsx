@@ -98,7 +98,7 @@ const GameBoard = () => {
             setGameOver(true)
         } else {
             getMoviesOfActor(actor.id).then((movies) => {
-                const randomMovies = getRandomMovies(movies, 20)
+                const randomMovies = getRandomMovies(movies)
                 setMovies(randomMovies)
                 setSelectedMovies([])
                 setScore(score - 1)
@@ -115,59 +115,57 @@ const GameBoard = () => {
         return <GameResult path={gamePath} success={nexusFound} score={score} />
     }
 
-    return (
-        <div className='game-board'>
-            <h2>Tira los dados para que aparezcan los actores</h2>
-            <button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
-                <img src='/icon/dados.png' alt='Obtener Actores Aleatorios' />
-            </button>
-            <div className='subtitle-container'>
-                <h2>Actores seleccionados</h2>
-                <div className='score'>
-                    <h3>Puntuación: {score}</h3>
-                </div>
+    return <div className='game-board'>
+        <h2>Tira los dados para que aparezcan los actores</h2>
+        <button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
+            <img src='/icon/dados.png' alt='Obtener Actores Aleatorios' />
+        </button>
+        <div className='subtitle-container'>
+            <h2>Actores seleccionados</h2>
+            <div className='score'>
+                <h3>Puntuación: {score}</h3>
             </div>
-            <div className='actors-container'>
-                {showActors && actor1 && <ActorCard actor={actor1} onActorSelect={onActorSelect} />}
-                {showActors && actor2 && <ActorCard actor={actor2} onActorSelect={onActorSelect} />}
-            </div>
-            {selectedMovies.length === 0 && movies.length > 0 && (
-                <div className='movies-list'>
-                    <h3>Películas de {selectedActor ? selectedActor.name : ''}</h3>
-                    <ul>
-                        {movies.map((movie) => (
-                            <li key={movie.id} onClick={() => onMovieSelect(movie)}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className='movie-poster'
-                                    onError={(e) => e.target.src = 'path/to/default-poster.jpg'}
-                                />
-                                {movie.title}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-            {selectedMovies.length > 0 && (
-                <MovieCard
-                    movie={selectedMovies[0]}
-                    actors={actorsInMovie}
-                    onActorSelect={onActorSelect}
-                />
-            )}
-            {gamePath && (
-                <div className='game-path'>
-                    <h2>Camino encontrado:</h2>
-                    <ul>
-                        {gamePath.map((actor, index) => (
-                            <li key={index}>{formatActorName(actor)}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
         </div>
-    )
+        <div className='actors-container'>
+            {showActors && actor1 && <ActorCard actor={actor1} onActorSelect={onActorSelect} />}
+            {showActors && actor2 && <ActorCard actor={actor2} onActorSelect={onActorSelect} />}
+        </div>
+        {selectedMovies.length === 0 && movies.length > 0 && (
+            <div className='movies-list'>
+                <h3>Películas de {selectedActor ? selectedActor.name : ''}</h3>
+                <ul>
+                    {movies.map((movie) => (
+                        <li key={movie.id} onClick={() => onMovieSelect(movie)}>
+                            <img
+                                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                                alt={movie.title}
+                                className='movie-poster'
+                                onError={(e) => e.target.src = 'path/to/default-poster.jpg'}
+                            />
+                            {movie.title}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )}
+        {selectedMovies.length > 0 && (
+            <MovieCard
+                movie={selectedMovies[0]}
+                actors={actorsInMovie}
+                onActorSelect={onActorSelect}
+            />
+        )}
+        {gamePath && (
+            <div className='game-path'>
+                <h2>Camino encontrado:</h2>
+                <ul>
+                    {gamePath.map((actor, index) => (
+                        <li key={index}>{formatActorName(actor)}</li>
+                    ))}
+                </ul>
+            </div>
+        )}
+    </div>
 }
 
 export default GameBoard
