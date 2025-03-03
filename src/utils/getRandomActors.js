@@ -1,11 +1,13 @@
 import { API_KEY, BASE_URL } from './api.js'
 
 const getActorDetails = (actorId) => {
+
     return fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}`)
         .then((response) => response.json())
 }
 
 export const getRandomActors = (excludedActors = []) => {
+
     return fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&language=en-US&page=1`)
         .then((response) => response.json())
         .then((data) => {

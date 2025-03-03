@@ -1,5 +1,4 @@
 export const createPath = (startActor, endActor, moviesGraph) => {
-    let path = []
     let visited = new Set()
     let queue = [[startActor]]
     visited.add(startActor.id)
