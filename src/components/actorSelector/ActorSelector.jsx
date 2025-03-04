@@ -21,16 +21,16 @@ const ActorSelector = ({ onSelect }) => {
         setActorName('')
     }
 
-    return <div className="actor-selector">
+    return <div className='actor-selector'>
         <input
-            type="text"
+            type='text'
             value={actorName}
             onChange={(e) => setActorName(e.target.value)}
-            placeholder="Nombre del actor"
+            placeholder='Nombre del actor'
         />
         <button onClick={handleSearch}>Buscar Actor</button>
         {searchResults.length > 0 && (
-            <ul className="search-results">
+            <ul className='search-results'>
                 {searchResults.map((actor) => (
                     <li key={actor.id} onClick={() => handleSelect(actor)}>
                         {actor.name}
