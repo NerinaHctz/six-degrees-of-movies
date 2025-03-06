@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ActorCard from '../actorCard/ActorCard'
 import MovieCard from '../movieCard/MovieCard'
 import GameResult from '../gameResult/GameResult'
+import Instructions from '../instructions/Instructions.jsx'
 import { getMoviesOfActor } from '../../utils/getMoviesOfActor.js'
 import { getActorInfoFromMovie } from '../../utils/getActorInfoFromMovie.js'
 import { getRandomActors } from '../../utils/getRandomActors.js'
@@ -25,6 +26,7 @@ const GameBoard = () => {
     const [gameOver, setGameOver] = useState(false)
     const [diceRollCount, setDiceRollCount] = useState(0)
     const [selectedActors, setSelectedActors] = useState([])
+    const [showInstructions, setShowInstructions] = useState(false)
 
     const fetchRandomActors = () => {
         if (diceRollCount > 0 && !nexusFound) {
@@ -88,15 +90,34 @@ const GameBoard = () => {
             setActorsInMovie(actors)
             setSelectedMovies([movie])
             setScore(score - 1)
+
+            const isActor2InCast = actors.some(actor => actor.id === actor2.id)
+            if (isActor2InCast) {
+                setNexusFound(true)
+                setGameOver(true)
+            }
         })
     }
 
     const onActorSelect = (actor) => {
-        setSelectedActor(actor)
-        if (actor.id === actor2.id) {
-            setNexusFound(true)
-            setGameOver(true)
+        if (actor.id === actor1.id) {
+            setSelectedActor(actor)
+            getMoviesOfActor(actor.id).then((movies) => {
+                const randomMovies = getRandomMovies(movies)
+                setMovies(randomMovies)
+                setSelectedMovies([])
+                setScore(score - 1)
+            })
+        } else if (actor.id === actor2.id) {
+            const isActorInSelectedMovies = selectedMovies.some(movie => movie.cast && movie.cast.some(castMember => castMember.id === actor2.id))
+            if (isActorInSelectedMovies) {
+                setNexusFound(true)
+                setGameOver(true)
+            } else {
+
+            }
         } else {
+            setSelectedActor(actor)
             getMoviesOfActor(actor.id).then((movies) => {
                 const randomMovies = getRandomMovies(movies)
                 setMovies(randomMovies)
@@ -111,12 +132,18 @@ const GameBoard = () => {
         return shuffled.slice(0, count)
     }
 
+    const toggleInstructions = () => setShowInstructions(!showInstructions)
+
     if (gameOver || score <= 0) {
         return <GameResult path={gamePath} success={nexusFound} score={score} />
     }
 
     return <div className='game-board'>
-        <h2>Tira los dados para que aparezcan los actores</h2>
+        <div className='instruction-container'>
+            <h2>Tira los dados para que aparezcan los actores</h2>
+            <button className='help-button' onClick={toggleInstructions}>Ayuda</button>
+            {showInstructions && <Instructions />}
+        </div>
         <button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
             <img src='/icon/dados.png' alt='Obtener Actores Aleatorios' />
         </button>
