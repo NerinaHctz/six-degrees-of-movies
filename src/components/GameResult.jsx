@@ -1,11 +1,14 @@
 import React from 'react'
+import Container from './common/Container'
+import Title from './common/Title'
+import '../styles/GameResult.scss'
 
 const GameResult = ({ path, success, score }) => {
 
-    return <div className='game-result'>
-        <h2>{success ? '¡Ganaste!' : 'Juego Terminado'}</h2>
+    return <Container className='game-result'>
+        <Title level={2}>{success ? '¡Ganaste!' : 'Juego Terminado'}</Title>
         {success ? (
-            <div>
+            <Container>
                 <p>Puntuación: {score}</p>
                 {path && path.length > 0 && (
                     <ul>
@@ -19,11 +22,11 @@ const GameResult = ({ path, success, score }) => {
                 {score >= 94 && (
                     <p>¡Felicidades! Encontraste al actor en menos de seis pasos. ¡Eres un maestro del juego "Six Degrees of Movies"!</p>
                 )}
-            </div>
+            </Container>
         ) : (
             <p>Puntuación agotada.</p>
         )}
-    </div>
+    </Container>
 }
 
 export default GameResult

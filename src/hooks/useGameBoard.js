@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import ActorCard from '../actorCard/ActorCard'
-import MovieCard from '../movieCard/MovieCard'
-import GameResult from '../gameResult/GameResult'
-import { getMoviesOfActor } from '../../utils/getMoviesOfActor.js'
-import { getActorInfoFromMovie } from '../../utils/getActorInfoFromMovie.js'
-import { getRandomActors } from '../../utils/getRandomActors.js'
-import { createPath } from '../../utils/helpers/createPath.js'
-import { buildMoviesGraph } from '../../utils/helpers/buildMoviesGraph.js'
-import { formatActorName } from '../../utils/helpers/formatActorName.js'
-import './GameBoard.scss'
+import { useState, useEffect } from 'react'
+import { getMoviesOfActor } from '../utils/getMoviesOfActor.js'
+import { getActorInfoFromMovie } from '../utils/getActorInfoFromMovie.js'
+import { getRandomActors } from '../utils/getRandomActors.js'
+import { createPath } from '../utils/handlers/createPath.js'
+import { buildMoviesGraph } from '../utils/handlers/buildMoviesGraph.js'
 
-const GameBoard = () => {
+const useGameBoard = () => {
     const [actor1, setActor1] = useState(null)
     const [actor2, setActor2] = useState(null)
     const [movies, setMovies] = useState([])
@@ -25,6 +20,7 @@ const GameBoard = () => {
     const [gameOver, setGameOver] = useState(false)
     const [diceRollCount, setDiceRollCount] = useState(0)
     const [selectedActors, setSelectedActors] = useState([])
+    const [showInstructions, setShowInstructions] = useState(false)
 
     const fetchRandomActors = () => {
         if (diceRollCount > 0 && !nexusFound) {
@@ -88,15 +84,34 @@ const GameBoard = () => {
             setActorsInMovie(actors)
             setSelectedMovies([movie])
             setScore(score - 1)
+
+            const isActor2InCast = actors.some(actor => actor.id === actor2.id)
+            if (isActor2InCast) {
+                setNexusFound(true)
+                setGameOver(true)
+            }
         })
     }
 
     const onActorSelect = (actor) => {
-        setSelectedActor(actor)
-        if (actor.id === actor2.id) {
-            setNexusFound(true)
-            setGameOver(true)
+        if (actor.id === actor1.id) {
+            setSelectedActor(actor)
+            getMoviesOfActor(actor.id).then((movies) => {
+                const randomMovies = getRandomMovies(movies)
+                setMovies(randomMovies)
+                setSelectedMovies([])
+                setScore(score - 1)
+            })
+        } else if (actor.id === actor2.id) {
+            const isActorInSelectedMovies = selectedMovies.some(movie => movie.cast && movie.cast.some(castMember => castMember.id === actor2.id))
+            if (isActorInSelectedMovies) {
+                setNexusFound(true)
+                setGameOver(true)
+            } else {
+                // No hacer nada si el actor no está en el reparto
+            }
         } else {
+            setSelectedActor(actor)
             getMoviesOfActor(actor.id).then((movies) => {
                 const randomMovies = getRandomMovies(movies)
                 setMovies(randomMovies)
@@ -111,61 +126,31 @@ const GameBoard = () => {
         return shuffled.slice(0, count)
     }
 
-    if (gameOver || score <= 0) {
-        return <GameResult path={gamePath} success={nexusFound} score={score} />
-    }
+    const toggleInstructions = () => setShowInstructions(!showInstructions)
 
-    return <div className='game-board'>
-        <h2>Tira los dados para que aparezcan los actores</h2>
-        <button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
-            <img src='/icon/dados.png' alt='Obtener Actores Aleatorios' />
-        </button>
-        <div className='subtitle-container'>
-            <h2>Actores seleccionados</h2>
-            <div className='score'>
-                <h3>Puntuación: {score}</h3>
-            </div>
-        </div>
-        <div className='actors-container'>
-            {showActors && actor1 && <ActorCard actor={actor1} onActorSelect={onActorSelect} />}
-            {showActors && actor2 && <ActorCard actor={actor2} onActorSelect={onActorSelect} />}
-        </div>
-        {selectedMovies.length === 0 && movies.length > 0 && (
-            <div className='movies-list'>
-                <h3>Películas de {selectedActor ? selectedActor.name : ''}</h3>
-                <ul>
-                    {movies.map((movie) => (
-                        <li key={movie.id} onClick={() => onMovieSelect(movie)}>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                                alt={movie.title}
-                                className='movie-poster'
-                                onError={(e) => e.target.src = 'path/to/default-poster.jpg'}
-                            />
-                            {movie.title}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )}
-        {selectedMovies.length > 0 && (
-            <MovieCard
-                movie={selectedMovies[0]}
-                actors={actorsInMovie}
-                onActorSelect={onActorSelect}
-            />
-        )}
-        {gamePath && (
-            <div className='game-path'>
-                <h2>Camino encontrado:</h2>
-                <ul>
-                    {gamePath.map((actor, index) => (
-                        <li key={index}>{formatActorName(actor)}</li>
-                    ))}
-                </ul>
-            </div>
-        )}
-    </div>
+    return {
+        actor1,
+        actor2,
+        movies,
+        selectedMovies,
+        actorsInMovie,
+        gamePath,
+        showActors,
+        selectedActor,
+        isRolling,
+        score,
+        nexusFound,
+        gameOver,
+        diceRollCount,
+        selectedActors,
+        showInstructions,
+        fetchRandomActors,
+        resetGame,
+        onMovieSelect,
+        onActorSelect,
+        getRandomMovies,
+        toggleInstructions
+    }
 }
 
-export default GameBoard
+export default useGameBoard

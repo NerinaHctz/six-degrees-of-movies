@@ -2,6 +2,12 @@
     padding: 20px;
 }
 
+.instruction-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 .dice-button {
     background: none;
     border: none;
