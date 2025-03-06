@@ -1,9 +1,11 @@
 import React from 'react'
-import './Instructions.scss'
+import Container from './common/Container'
+import Title from './common/Title'
+import '../styles/Instructions.scss'
 
 const Instructions = () => {
-    return <div className='instructions'>
-        <h2>Instrucciones</h2>
+    return <Container className='instructions'>
+        <Title level={2}>Instrucciones</Title>
         <ul>
             <li>Haz clic en los dados para seleccionar dos actores al azar.</li>
             <li>Pulsa en el actor de la izquierda para ver las películas en las que aparece.</li>
@@ -11,7 +13,7 @@ const Instructions = () => {
             <li>Haz clic en un actor de la lista para ver sus películas.</li>
             <li>Encuentra el camino más corto entre el actor de la izquierda y el de la derecha.</li>
         </ul>
-    </div>
+    </Container>
 }
 
 export default Instructions

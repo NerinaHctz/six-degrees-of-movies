@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Home from './components/home/Home'
-import GameBoard from './components/gameBoard/GameBoard'
+import Home from './components/Home'
+import GameBoard from './components/GameBoard'
+import Container from './components/common/Container'
 
 const App = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -9,9 +10,9 @@ const App = () => {
     setIsGameStarted(true)
   };
 
-  return <div className="app">
+  return <Container className="app">
     {isGameStarted ? <GameBoard /> : <Home onStart={handleStartGame} />}
-  </div>
+  </Container>
 }
 
 export default App
