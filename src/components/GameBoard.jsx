@@ -29,11 +29,12 @@ const GameBoard = () => {
         fetchRandomActors,
         onMovieSelect,
         onActorSelect,
-        toggleInstructions
+        toggleInstructions,
+        nexusMovie
     } = useGameBoard()
 
     if (gameOver || score <= 0) {
-        return <GameResult path={gamePath} success={nexusFound} score={score} />
+        return <GameResult path={gamePath} success={nexusFound} score={score} nexusMovie={nexusMovie} />
     }
 
     return <Container className='game-board'>
@@ -82,16 +83,7 @@ const GameBoard = () => {
                 onActorSelect={onActorSelect}
             />
         )}
-        {gamePath && (
-            <Container className='game-path'>
-                <Title level={2}>Camino encontrado:</Title>
-                <ul>
-                    {gamePath.map((actor, index) => (
-                        <li key={index}>{formatActorName(actor)}</li>
-                    ))}
-                </ul>
-            </Container>
-        )}
+
     </Container>
 }
 
