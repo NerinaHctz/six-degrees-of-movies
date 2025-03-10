@@ -21,6 +21,7 @@ const useGameBoard = () => {
     const [diceRollCount, setDiceRollCount] = useState(0)
     const [selectedActors, setSelectedActors] = useState([])
     const [showInstructions, setShowInstructions] = useState(false)
+    const [nexusMovie, setNexusMovie] = useState(null)
 
     const fetchRandomActors = () => {
         if (diceRollCount > 0 && !nexusFound) {
@@ -36,6 +37,11 @@ const useGameBoard = () => {
                 setShowActors(true)
                 setIsRolling(false)
                 setNexusFound(false)
+                setGamePath(null)
+                setNexusMovie(null)
+                setMovies([])
+                setSelectedMovies([])
+                setActorsInMovie([])
                 setGamePath(null)
             }).catch(error => {
                 if (error.message === 'No hay suficientes actores disponibles para seleccionar dos diferentes.') {
@@ -65,6 +71,7 @@ const useGameBoard = () => {
         setGameOver(false)
         setDiceRollCount(0)
         setSelectedActors([])
+        setNexusMovie(null)
     }
 
     useEffect(() => {
@@ -74,7 +81,15 @@ const useGameBoard = () => {
                     const graph = buildMoviesGraph(movies1 || [], movies2 || [])
                     const path = createPath(actor1, actor2, graph)
                     setGamePath(path)
+                    if (path && path.length > 0) {
+                        const nexusMovie = path.find(step => step.movie)
+                        setNexusMovie(nexusMovie)
+                    }
+                }).catch(error => {
+                    console.error('Error fetching movies for actor2:', error)
                 })
+            }).catch(error => {
+                console.error('Error fetching movies for actor1:', error)
             })
         }
     }, [actor1, actor2])
@@ -90,6 +105,8 @@ const useGameBoard = () => {
                 setNexusFound(true)
                 setGameOver(true)
             }
+        }).catch(error => {
+            console.error('Error selecting movie:', error)
         })
     }
 
@@ -101,6 +118,8 @@ const useGameBoard = () => {
                 setMovies(randomMovies)
                 setSelectedMovies([])
                 setScore(score - 1)
+            }).catch(error => {
+                console.error('Error fetching movies for actor:', error)
             })
         } else if (actor.id === actor2.id) {
             const isActorInSelectedMovies = selectedMovies.some(movie => movie.cast && movie.cast.some(castMember => castMember.id === actor2.id))
@@ -117,6 +136,8 @@ const useGameBoard = () => {
                 setMovies(randomMovies)
                 setSelectedMovies([])
                 setScore(score - 1)
+            }).catch(error => {
+                console.error('Error fetching movies for actor:', error)
             })
         }
     }
@@ -149,7 +170,8 @@ const useGameBoard = () => {
         onMovieSelect,
         onActorSelect,
         getRandomMovies,
-        toggleInstructions
+        toggleInstructions,
+        nexusMovie
     }
 }
 
