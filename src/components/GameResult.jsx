@@ -1,9 +1,10 @@
 import React from 'react'
 import Container from './common/Container'
 import Title from './common/Title'
+import MovieCard from './MovieCard'
 import '../styles/GameResult.scss'
 
-const GameResult = ({ path, success, score, nexusMovie }) => {
+const GameResult = ({ path, success, score, selectedMovie, actorsInMovie }) => {
     return <Container className='game-result'>
         <Title level={2}>{success ? '¡Ganaste!' : 'Juego Terminado'}</Title>
         {success ? (
@@ -18,12 +19,12 @@ const GameResult = ({ path, success, score, nexusMovie }) => {
                         ))}
                     </ul>
                 )}
-                {nexusMovie && (
-                    <Container className='nexus-movie'>
+                {selectedMovie && (
+                    <Container className='selected-movie'>
                         <Title level={3}>Película de Nexo</Title>
                         <MovieCard
-                            movie={nexusMovie}
-                            actors={nexusMovie.actors}
+                            movie={selectedMovie}
+                            actors={actorsInMovie}
                             onActorSelect={() => { }}
                         />
                     </Container>

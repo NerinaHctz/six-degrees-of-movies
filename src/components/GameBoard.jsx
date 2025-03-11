@@ -29,12 +29,11 @@ const GameBoard = () => {
         fetchRandomActors,
         onMovieSelect,
         onActorSelect,
-        toggleInstructions,
-        nexusMovie
+        toggleInstructions
     } = useGameBoard()
 
     if (gameOver || score <= 0) {
-        return <GameResult path={gamePath} success={nexusFound} score={score} nexusMovie={nexusMovie} />
+        return <GameResult path={gamePath} success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} />
     }
 
     return <Container className='game-board'>
