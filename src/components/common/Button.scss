@@ -1,0 +1,75 @@
+$button-border-color: rgba(255, 255, 255, 0.3);
+$button-background-color: rgba(255, 255, 255, 0.1);
+$button-text-color: #D4D4D4;
+$button-hover-background-color: rgba(255, 255, 255, 0.2);
+$button-active-background-color: rgba(255, 255, 255, 0.3);
+$button-focus-box-shadow-color: rgba(255, 255, 255, 0.3);
+$button-box-shadow-color: rgba(0, 0, 0, 0.2);
+$button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
+$button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
+
+.button {
+    padding: 10px 20px;
+    border: 1px solid $button-border-color;
+    border-radius: 10px;
+    background: $button-background-color;
+    color: $button-text-color;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px $button-box-shadow-color;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 122px;
+    width: 100%;
+
+    &:hover {
+        background: $button-hover-background-color;
+        box-shadow: 0 6px 12px $button-hover-box-shadow-color;
+    }
+
+    &:active {
+        background: $button-active-background-color;
+        box-shadow: 0 2px 4px $button-active-box-shadow-color;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px $button-focus-box-shadow-color;
+    }
+
+    &.instructions-button {
+        margin-top: 205px;
+    }
+
+    &.help-button {
+        margin-top: 0;
+    }
+
+    &.dice-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-top: 0;
+
+        img {
+            width: 50px;
+            height: auto;
+        }
+
+        &.rolling img {
+            animation: roll 1s infinite;
+        }
+    }
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

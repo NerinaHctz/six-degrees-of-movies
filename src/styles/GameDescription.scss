@@ -1,11 +1,30 @@
+$color-background: #000000;
+$color-foreground: #D4D4D4;
+$color-primary: #9900cc;
+$color-secondary: #3A3D41;
+$color-accent: #569CD6;
+$color-red: #F44747;
+$color-gold: #FFCC00;
+
 .game-description {
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid $color-gold;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: $color-background;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .game-description p {
     margin: 10px 0;
+}
+
+.game-description h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.game-description p {
+    font-size: 15px;
+    margin-bottom: 10px;
 }

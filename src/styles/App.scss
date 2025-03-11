@@ -1,0 +1,15 @@
+$color-background: #000000;
+$color-foreground: #D4D4D4;
+$color-primary: #9900cc;
+$color-secondary: #3A3D41;
+$color-accent: #569CD6;
+$color-red: #F44747;
+$color-gold: #FFCC00;
+
+body {
+    background-color: $color-background;
+    color: $color-foreground;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
