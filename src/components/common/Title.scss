@@ -1,0 +1,16 @@
+$color-red: #F44747;
+$color-purple: #9900cc;
+
+.title {
+
+
+    &.game-title {
+        background: linear-gradient(to right, $color-red, $color-purple);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+    }
+}

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Instructions from './Instructions'
 import GameDescription from './GameDescription'
 import Container from './common/Container'
-import Button from './common/Button'
 import '../styles/Home.scss'
 
 const Home = ({ onStart }) => {
@@ -12,20 +11,14 @@ const Home = ({ onStart }) => {
         setShowInstructions(true)
     }
 
-    const handleBackToDescription = () => {
-        setShowInstructions(false)
-    }
-
     return <Container className='home'>
         {!showInstructions ? (
-            <GameDescription onShowInstructions={handleShowInstructions} />
+            <GameDescription onShowInstructions={handleShowInstructions} showInstructions={showInstructions} onStart={onStart} />
         ) : (
             <>
-                <Instructions />
-                <Button onClick={handleBackToDescription}>Volver</Button>
+                <Instructions onStart={onStart} />
             </>
         )}
-        <Button onClick={onStart}>Empezar el juego</Button>
     </Container>
 }
 

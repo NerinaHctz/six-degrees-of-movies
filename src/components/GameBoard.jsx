@@ -34,6 +34,7 @@ const GameBoard = () => {
 
 
     return <Container className='game-board'>
+        <Title level={1} className='game-title'>Six Degrees of Movies</Title>
         <Container className='instruction-container'>
             <Title level={2}>Tira los dados para que aparezcan los actores</Title>
             <Container className='instruction-container'>
