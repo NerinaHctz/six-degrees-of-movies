@@ -4,7 +4,6 @@ import MovieCard from './MovieCard'
 import GameResult from './GameResult'
 import Instructions from './Instructions.jsx'
 import useGameBoard from '../hooks/useGameBoard'
-import { formatActorName } from '../utils/handlers/formatActorName.js'
 import Button from './common/Button'
 import Container from './common/Container'
 import Title from './common/Title'
@@ -18,7 +17,6 @@ const GameBoard = () => {
         movies,
         selectedMovies,
         actorsInMovie,
-        gamePath,
         showActors,
         selectedActor,
         isRolling,
@@ -32,9 +30,8 @@ const GameBoard = () => {
         toggleInstructions
     } = useGameBoard()
 
-    if (gameOver || score <= 0) {
-        return <GameResult path={gamePath} success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} />
-    }
+    if (gameOver || score <= 0) return <GameResult success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} />
+
 
     return <Container className='game-board'>
         <Container className='instruction-container'>

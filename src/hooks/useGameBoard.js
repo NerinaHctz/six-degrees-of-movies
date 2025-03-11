@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { getMoviesOfActor } from '../utils/getMoviesOfActor.js'
 import { getActorInfoFromMovie } from '../utils/getActorInfoFromMovie.js'
 import { getRandomActors } from '../utils/getRandomActors.js'
-import { createPath } from '../utils/handlers/createPath.js'
-import { buildMoviesGraph } from '../utils/handlers/buildMoviesGraph.js'
 
 const useGameBoard = () => {
     const [actor1, setActor1] = useState(null)
@@ -11,7 +9,6 @@ const useGameBoard = () => {
     const [movies, setMovies] = useState([])
     const [selectedMovies, setSelectedMovies] = useState([])
     const [actorsInMovie, setActorsInMovie] = useState([])
-    const [gamePath, setGamePath] = useState(null)
     const [showActors, setShowActors] = useState(false)
     const [selectedActor, setSelectedActor] = useState(null)
     const [isRolling, setIsRolling] = useState(false)
@@ -21,7 +18,6 @@ const useGameBoard = () => {
     const [diceRollCount, setDiceRollCount] = useState(0)
     const [selectedActors, setSelectedActors] = useState([])
     const [showInstructions, setShowInstructions] = useState(false)
-    const [nexusMovie, setNexusMovie] = useState(null)
 
     const fetchRandomActors = () => {
         if (diceRollCount > 0 && !nexusFound) {
@@ -37,12 +33,9 @@ const useGameBoard = () => {
                 setShowActors(true)
                 setIsRolling(false)
                 setNexusFound(false)
-                setGamePath(null)
-                setNexusMovie(null)
                 setMovies([])
                 setSelectedMovies([])
                 setActorsInMovie([])
-                setGamePath(null)
             }).catch(error => {
                 if (error.message === 'No hay suficientes actores disponibles para seleccionar dos diferentes.') {
                     if (window.confirm('No hay suficientes actores disponibles. ¿Quieres reiniciar el juego?')) {
@@ -62,7 +55,6 @@ const useGameBoard = () => {
         setMovies([])
         setSelectedMovies([])
         setActorsInMovie([])
-        setGamePath(null)
         setShowActors(false)
         setSelectedActor(null)
         setIsRolling(false)
@@ -71,20 +63,12 @@ const useGameBoard = () => {
         setGameOver(false)
         setDiceRollCount(0)
         setSelectedActors([])
-        setNexusMovie(null)
     }
 
     useEffect(() => {
         if (actor1 && actor2) {
             getMoviesOfActor(actor1.id).then((movies1) => {
                 getMoviesOfActor(actor2.id).then((movies2) => {
-                    const graph = buildMoviesGraph(movies1 || [], movies2 || [])
-                    const path = createPath(actor1, actor2, graph)
-                    setGamePath(path)
-                    if (path && path.length > 0) {
-                        const nexusMovie = path.find(step => step.movie)
-                        setNexusMovie(nexusMovie)
-                    }
                 }).catch(error => {
                     console.error('Error fetching movies for actor2:', error)
                 })
@@ -114,8 +98,7 @@ const useGameBoard = () => {
         if (actor.id === actor1.id) {
             setSelectedActor(actor)
             getMoviesOfActor(actor.id).then((movies) => {
-                const randomMovies = getRandomMovies(movies)
-                setMovies(randomMovies)
+                setMovies(movies)
                 setSelectedMovies([])
                 setScore(score - 1)
             }).catch(error => {
@@ -127,24 +110,17 @@ const useGameBoard = () => {
                 setNexusFound(true)
                 setGameOver(true)
             } else {
-                // No hacer nada si el actor no está en el reparto
             }
         } else {
             setSelectedActor(actor)
             getMoviesOfActor(actor.id).then((movies) => {
-                const randomMovies = getRandomMovies(movies)
-                setMovies(randomMovies)
+                setMovies(movies)
                 setSelectedMovies([])
                 setScore(score - 1)
             }).catch(error => {
                 console.error('Error fetching movies for actor:', error)
             })
         }
-    }
-
-    const getRandomMovies = (movies, count) => {
-        const shuffled = movies.sort(() => 0.5 - Math.random())
-        return shuffled.slice(0, count)
     }
 
     const toggleInstructions = () => setShowInstructions(!showInstructions)
@@ -155,7 +131,6 @@ const useGameBoard = () => {
         movies,
         selectedMovies,
         actorsInMovie,
-        gamePath,
         showActors,
         selectedActor,
         isRolling,
@@ -169,9 +144,7 @@ const useGameBoard = () => {
         resetGame,
         onMovieSelect,
         onActorSelect,
-        getRandomMovies,
         toggleInstructions,
-        nexusMovie
     }
 }
 

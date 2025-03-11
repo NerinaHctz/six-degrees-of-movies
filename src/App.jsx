@@ -10,7 +10,7 @@ const App = () => {
     setIsGameStarted(true)
   };
 
-  return <Container className="app">
+  return <Container className='app'>
     {isGameStarted ? <GameBoard /> : <Home onStart={handleStartGame} />}
   </Container>
 }

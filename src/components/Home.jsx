@@ -16,7 +16,7 @@ const Home = ({ onStart }) => {
         setShowInstructions(false)
     }
 
-    return <Container className="home">
+    return <Container className='home'>
         {!showInstructions ? (
             <GameDescription onShowInstructions={handleShowInstructions} />
         ) : (

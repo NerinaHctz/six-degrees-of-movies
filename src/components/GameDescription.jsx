@@ -5,7 +5,7 @@ import Button from './common/Button'
 import '../styles/GameDescription.scss'
 
 const GameDescription = ({ onShowInstructions }) => {
-    return <Container className="game-description">
+    return <Container className='game-description'>
         <Title level={1}>Bienvenido a Six Degrees of Movies</Title>
         <p>
             <strong>¿Qué es "Six Degrees of Movies"?</strong><br />
