@@ -1,11 +1,16 @@
+$color-background: #000000;
+$color-foreground: #D4D4D4;
+$color-primary: #9900cc;
+$color-secondary: #3A3D41;
+$color-accent: #56d6d6da;
 $color-red: #F44747;
-$color-purple: #9900cc;
+$color-gold: #FFCC00;
 
 .title {
 
 
     &.game-title {
-        background: linear-gradient(to right, $color-red, $color-purple);
+        background: linear-gradient(to right, $color-red, $color-primary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 2em;
@@ -13,4 +18,45 @@ $color-purple: #9900cc;
         text-align: center;
         margin: 20px 0;
     }
+
+    &.instructions-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .title {
+
+
+        &.game-title {
+            font-size: 1.7em;
+            margin: 10px 0;
+        }
+    }
+
+}
+
+@media screen and (max-width: 370px) {
+    .title {
+
+
+        &.game-title {
+            font-size: 1.5em;
+        }
+    }
+
+}
+
+@media screen and (max-width: 340px) {
+    .title {
+
+
+        &.game-title {
+            font-size: 1.4em;
+        }
+    }
+
 }

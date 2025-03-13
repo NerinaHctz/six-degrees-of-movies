@@ -5,16 +5,27 @@ $color-secondary: #3A3D41;
 $color-accent: #569CD6;
 $color-red: #F44747;
 $color-gold: #FFCC00;
+$button-border-color: rgba(255, 255, 255, 0.3);
+$button-background-color: rgba(255, 255, 255, 0.1);
+$button-text-color: #D4D4D4;
+$button-hover-background-color: rgba(255, 255, 255, 0.2);
+$button-active-background-color: rgba(255, 255, 255, 0.3);
+$button-focus-box-shadow-color: rgba(255, 255, 255, 0.3);
+$button-box-shadow-color: rgba(0, 0, 0, 0.2);
+$button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
+$button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
 
 .instructions {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    height: 90vh;
+    margin: auto;
     padding: 10px;
     border: 1px solid $color-gold;
-    background-color: $color-background;
-    border-radius: 5px;
-    width: 94%;
-    max-width: 600px;
+    background-color: $button-background-color;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }

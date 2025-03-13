@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from './common/Container'
+import Paragraph from './common/Paragraph'
 import Title from './common/Title'
 import MovieCard from './MovieCard'
 import '../styles/GameResult.scss'
@@ -9,9 +10,9 @@ const GameResult = ({ success, score, selectedMovie, actorsInMovie }) => {
         <Title level={2}>{success ? '¡Ganaste!' : 'Juego Terminado'}</Title>
         {success ? (
             <Container>
-                <p>Puntuación: {score}</p>
+                <Paragraph>Puntuación: {score}</Paragraph>
                 {score >= 94 && (
-                    <p>¡Felicidades! Encontraste al actor en menos de seis pasos. ¡Eres un maestro del juego "Six Degrees of Movies"!</p>
+                    <Paragraph>¡Felicidades! Encontraste al actor en menos de seis pasos. ¡Eres un maestro del juego "Six Degrees of Movies"!</Paragraph>
                 )}
                 {selectedMovie && (
                     <Container className='selected-movie'>
@@ -25,7 +26,7 @@ const GameResult = ({ success, score, selectedMovie, actorsInMovie }) => {
                 )}
             </Container>
         ) : (
-            <p>Puntuación agotada.</p>
+            <Paragraph>Puntuación agotada.</Paragraph>
         )}
     </Container>
 }

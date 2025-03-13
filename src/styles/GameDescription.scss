@@ -7,12 +7,15 @@ $color-red: #F44747;
 $color-gold: #FFCC00;
 
 .game-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
     padding: 20px;
     border: 1px solid $color-gold;
     border-radius: 5px;
-    background-color: $color-background;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
 }
 
 .game-description p {

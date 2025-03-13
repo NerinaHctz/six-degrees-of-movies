@@ -7,9 +7,20 @@ $color-red: #F44747;
 $color-gold: #FFCC00;
 
 body {
-    background-color: $color-background;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/hollywood_views.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     color: $color-foreground;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

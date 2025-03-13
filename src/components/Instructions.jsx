@@ -6,7 +6,7 @@ import '../styles/Instructions.scss'
 
 const Instructions = ({ onStart }) => {
     return <Container className='instructions'>
-        <Title level={2}>Instrucciones</Title>
+        <Title className='instructions-title' level={2}>Instrucciones</Title>
         <ul>
             <li>Haz clic en los dados para seleccionar dos actores al azar.</li>
             <li>Pulsa en el actor de la izquierda para ver las películas en las que aparece.</li>
