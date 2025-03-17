@@ -37,10 +37,7 @@ const GameBoard = () => {
         <Container className='game-board'>
             <Title level={1} className='game-title'>Six Degrees of Movies</Title>
             <Container className='instruction-container'>
-                <Title level={2}>Tira los dados para que aparezcan los actores</Title>
-                <Button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
-                    <img src='/icon/dados.png' alt='Obtener Actores Aleatorios' />
-                </Button>
+                <Title level={2} className='game-instructions'>Tira los dados para que aparezcan los actores</Title>
                 <Container className='instruction-container'>
                     <Button className='help-button' onClick={toggleInstructions}>
                         <img src="/icon/help.png" alt="Ayuda" />
@@ -48,6 +45,9 @@ const GameBoard = () => {
                     {showInstructions && <Instructions />}
                 </Container>
             </Container>
+            <Button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
+                <img src='/icon/dices_color.png' alt='Obtener Actores Aleatorios' />
+            </Button>
             <Container className='subtitle-container'>
                 <Title level={2}>Actores seleccionados</Title>
                 <Container className='score'>

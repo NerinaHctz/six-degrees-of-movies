@@ -6,14 +6,12 @@ const Image = ({ src, alt, className = '', defaultSrc }) => {
         e.target.src = defaultSrc
     }
 
-    return (
-        <img
-            src={src}
-            alt={alt}
-            className={className}
-            onError={handleError}
-        />
-    )
+    return <img
+        src={src}
+        alt={alt}
+        className={className}
+        onError={handleError}
+    />
 }
 
 export default Image
