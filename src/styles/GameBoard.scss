@@ -2,7 +2,7 @@ $color-background: #000000;
 $color-foreground: #D4D4D4;
 $color-primary: #9900cc;
 $color-secondary: #3A3D41;
-$color-accent: #569CD6;
+$color-accent: #56c7d6;
 $color-red: #F44747;
 $color-gold: #FFCC00;
 
@@ -15,12 +15,22 @@ $color-gold: #FFCC00;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
-    width: 93vw;
+    justify-content: flex-start;
+    min-height: 95vh;
+    width: 97vw;
     padding: 20px;
-    border: 1px solid #FFCC00;
+    border: 1px solid $color-gold;
     border-radius: 5px;
     margin: auto;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.subtitle-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .instruction-container {
@@ -30,14 +40,14 @@ $color-gold: #FFCC00;
     align-items: center;
 }
 
-.actors-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
 .movies-list {
     margin-top: 20px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
 
     ul {
         display: flex;
@@ -50,12 +60,6 @@ $color-gold: #FFCC00;
         width: 100px;
         text-align: center;
     }
-
-    .movie-poster {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
 }
 
 .selected-movie {
@@ -64,6 +68,8 @@ $color-gold: #FFCC00;
 }
 
 .actors-in-movie {
+
+
     ul {
         display: flex;
         flex-wrap: wrap;
@@ -77,15 +83,4 @@ $color-gold: #FFCC00;
         text-align: center;
         cursor: pointer;
     }
-
-    .actor-image {
-        width: 100%;
-        height: auto;
-    }
-}
-
-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
 }

@@ -1,0 +1,38 @@
+$button-border-color: rgba(255, 255, 255, 0.3);
+$button-background-color: rgba(255, 255, 255, 0.1);
+$button-text-color: #D4D4D4;
+$button-hover-background-color: rgba(255, 255, 255, 0.2);
+$button-active-background-color: rgba(255, 255, 255, 0.3);
+$button-focus-box-shadow-color: rgba(255, 255, 255, 0.3);
+$button-box-shadow-color: rgba(0, 0, 0, 0.2);
+$button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
+$button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
+$color-accent: #56c7d6;
+
+.actors-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .actor-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .actor-image {
+        width: 120px;
+        height: 179px;
+        padding: 5px;
+        border: 2px solid $color-accent;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    h3 {
+        color: $color-accent;
+        text-align: center;
+    }
+}

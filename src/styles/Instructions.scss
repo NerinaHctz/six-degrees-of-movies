@@ -28,4 +28,23 @@ $button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
 }

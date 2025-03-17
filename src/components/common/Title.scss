@@ -8,7 +8,6 @@ $color-gold: #FFCC00;
 
 .title {
 
-
     &.game-title {
         background: linear-gradient(to right, $color-red, $color-primary);
         -webkit-background-clip: text;
@@ -27,9 +26,12 @@ $color-gold: #FFCC00;
     }
 }
 
-@media screen and (max-width: 430px) {
-    .title {
+h2 {
+    font-size: 1.3em;
+}
 
+@media (max-width: 430px) {
+    .title {
 
         &.game-title {
             font-size: 1.7em;
@@ -37,26 +39,37 @@ $color-gold: #FFCC00;
         }
     }
 
+    h2 {
+        font-size: 1.5em;
+    }
+
 }
 
-@media screen and (max-width: 370px) {
+@media (max-width: 370px) {
     .title {
-
 
         &.game-title {
             font-size: 1.5em;
         }
     }
 
+    h2 {
+        font-size: 1.3em;
+    }
+
 }
 
-@media screen and (max-width: 340px) {
+@media (max-width: 340px) {
     .title {
 
 
         &.game-title {
             font-size: 1.4em;
         }
+    }
+
+    h2 {
+        font-size: 1.2em;
     }
 
 }
