@@ -40,7 +40,7 @@ const GameBoard = () => {
                 <Title level={2} className='game-instructions'>Tira los dados para que aparezcan los actores</Title>
                 <Container className='instruction-container'>
                     <Button className='help-button' onClick={toggleInstructions}>
-                        <img src="/icon/help.png" alt="Ayuda" />
+                        <img src='/icon/help.png' alt='Ayuda' />
                     </Button>
                     {showInstructions && <Instructions />}
                 </Container>

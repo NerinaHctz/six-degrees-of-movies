@@ -8,6 +8,7 @@ $button-box-shadow-color: rgba(0, 0, 0, 0.2);
 $button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
 $button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
 $color-primary: #9900cc;
+$color-red: #F44747;
 
 .movie-card {
     margin-top: 20px;
@@ -22,6 +23,12 @@ $color-primary: #9900cc;
         height: auto;
         border-radius: 10px;
         width: 167px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        border: 2px solid $color-primary;
     }
 
     .movie-card__actors {
@@ -43,6 +50,12 @@ $color-primary: #9900cc;
             width: 80px;
             text-align: center;
             cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid $color-red;
         }
     }
 }
@@ -50,9 +63,5 @@ $color-primary: #9900cc;
 .movie-poster {
     width: 83%;
     height: auto;
-    border-radius: 10px;
-    border: 2px solid $color-primary;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 5px;
+
 }
