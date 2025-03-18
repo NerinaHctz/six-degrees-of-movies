@@ -2,7 +2,6 @@ import React from 'react'
 import ActorCard from './ActorCard'
 import MovieCard from './MovieCard'
 import GameResult from './GameResult'
-import Instructions from './Instructions.jsx'
 import useGameBoard from '../hooks/useGameBoard'
 import Button from './common/Button'
 import Container from './common/Container'
@@ -23,27 +22,18 @@ const GameBoard = () => {
         score,
         nexusFound,
         gameOver,
-        showInstructions,
         fetchRandomActors,
         onMovieSelect,
         onActorSelect,
-        toggleInstructions
     } = useGameBoard()
 
     if (gameOver || score <= 0) return <GameResult success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} />
-
 
     return <Container className='game-page'>
         <Container className='game-board'>
             <Title level={1} className='game-title'>Six Degrees of Movies</Title>
             <Container className='instruction-container'>
                 <Title level={2} className='game-instructions'>Tira los dados para que aparezcan los actores</Title>
-                <Container className='instruction-container'>
-                    <Button className='help-button' onClick={toggleInstructions}>
-                        <img src='/icon/help.png' alt='Ayuda' />
-                    </Button>
-                    {showInstructions && <Instructions />}
-                </Container>
             </Container>
             <Button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
                 <img src='/icon/dices_color.png' alt='Obtener Actores Aleatorios' />

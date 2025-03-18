@@ -1,0 +1,37 @@
+$color-background: #000000;
+$color-foreground: #D4D4D4;
+$color-primary: #9900cc;
+$color-secondary: #3A3D41;
+$color-accent: #56c7d6;
+$color-red: #F44747;
+$color-gold: #FFCC00;
+
+.game-result {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/hollywood_night.jpg');
+    color: $color-foreground;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    width: 100vw;
+
+    .game-board {
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid $color-accent;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 97vh;
+        padding: 20px;
+
+        .title.game-title {
+            background: linear-gradient(to right, $color-accent, $color-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}

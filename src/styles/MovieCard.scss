@@ -11,7 +11,6 @@ $color-primary: #9900cc;
 $color-red: #F44747;
 
 .movie-card {
-    margin-top: 20px;
     text-align: center;
 
     .movie-card__title {
@@ -29,20 +28,22 @@ $color-red: #F44747;
         border-radius: 10px;
         padding: 20px;
         border: 2px solid $color-primary;
+        margin-bottom: 35px;
     }
 
     .movie-card__actors {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+
         ul {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
             margin-top: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
         }
 
         li {
