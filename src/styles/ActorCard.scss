@@ -11,7 +11,7 @@ $color-accent: #56c7d6;
 
 .actors-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 20px;
     width: 100%;
 
@@ -25,14 +25,13 @@ $color-accent: #56c7d6;
     .actor-image {
         width: 120px;
         height: 179px;
-        padding: 5px;
+        padding: 10px;
         border: 2px solid $color-accent;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
     }
 
     h3 {
-        color: $color-accent;
         text-align: center;
     }
 }

@@ -28,14 +28,16 @@ $color-gold: #FFCC00;
 
 .subtitle-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
     margin-bottom: 20px;
+    flex-direction: column-reverse;
+    line-height: 0;
 }
 
 .instruction-container {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     width: 100%;
     align-items: center;
 }
@@ -58,6 +60,15 @@ $color-gold: #FFCC00;
     li {
         list-style: none;
         width: 100px;
+        text-align: center;
+        border-radius: 10px;
+        border: 2px solid $color-primary;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 5px;
+    }
+
+    h3 {
         text-align: center;
     }
 }
