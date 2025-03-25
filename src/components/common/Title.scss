@@ -23,11 +23,31 @@ $color-gold: #FFCC00;
         font-weight: bold;
         text-align: center;
         margin: 20px 0;
+        color: $color-gold;
+    }
+
+    &.subtitle-title {
+        color: $color-accent;
+    }
+
+    .score {
+        color: $color-gold;
+    }
+
+    &.game-result {
+        .final-score {
+            color: $color-accent;
+        }
     }
 }
 
 h2 {
     font-size: 1.3em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.1em;
     text-align: center;
 }
 

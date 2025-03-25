@@ -8,10 +8,11 @@ $button-box-shadow-color: rgba(0, 0, 0, 0.2);
 $button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
 $button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
 $color-primary: #9900cc;
-$color-red: #F44747;
+$color-red: #F4478D;
 
 .movie-card {
     text-align: center;
+    cursor: pointer;
 
     .movie-card__title {
         font-size: 1.5em;
@@ -29,6 +30,7 @@ $color-red: #F44747;
         padding: 20px;
         border: 2px solid $color-primary;
         margin-bottom: 35px;
+        cursor: pointer;
     }
 
     .movie-card__actors {
@@ -44,6 +46,7 @@ $color-red: #F44747;
             gap: 10px;
             justify-content: center;
             margin-top: 20px;
+            padding: 0;
         }
 
         li {
@@ -63,6 +66,5 @@ $color-red: #F44747;
 
 .movie-poster {
     width: 83%;
-    height: auto;
 
 }
