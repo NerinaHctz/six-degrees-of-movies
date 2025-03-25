@@ -36,12 +36,12 @@ const GameBoard = () => {
                 <Title level={2} className='game-instructions'>Tira los dados para que aparezcan los actores</Title>
             </Container>
             <Button className={`dice-button ${isRolling ? 'rolling' : ''}`} onClick={fetchRandomActors}>
-                <img src='/icon/dices_color.png' alt='Obtener Actores Aleatorios' />
+                <img src='/icon/dices_white.png' alt='Obtener Actores Aleatorios' />
             </Button>
             <Container className='subtitle-container'>
-                <Title level={2}>Actores seleccionados</Title>
+                <Title className='subtitle-title' level={2}>Actores seleccionados</Title>
                 <Container className='score'>
-                    <Title level={3}>Puntuación: {score}</Title>
+                    <Title level={3}>Puntuación: <span className='score'>{score}</span></Title>
                 </Container>
             </Container>
             <Container className='actors-container'>

@@ -14,6 +14,7 @@ $color-accent: #56c7d6;
     justify-content: space-around;
     margin-bottom: 20px;
     width: 100%;
+    cursor: pointer;
 
     .actor-card {
         display: flex;
@@ -33,5 +34,23 @@ $color-accent: #56c7d6;
 
     h3 {
         text-align: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .actors-container {
+        width: unset;
+
+        h3 {
+            font-size: 15px;
+        }
+    }
+
+    .actor-card {
+        font-size: 14px;
+    }
+
+    .actor-image {
+        width: 100%;
     }
 }
