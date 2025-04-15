@@ -16,3 +16,9 @@
 .home ul li {
     margin: 10px 0;
 }
+
+@media (max-width: 430px) {
+    .home ul {
+        margin-top: -10px;
+    }
+}

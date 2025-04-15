@@ -8,6 +8,7 @@ $button-box-shadow-color: rgba(0, 0, 0, 0.2);
 $button-hover-box-shadow-color: rgba(0, 0, 0, 0.3);
 $button-active-box-shadow-color: rgba(0, 0, 0, 0.2);
 $color-accent: #56c7d6;
+$higlight-color: #00ff00;
 
 .actors-container {
     display: flex;
@@ -23,6 +24,10 @@ $color-accent: #56c7d6;
         align-items: center;
     }
 
+    .highlight .actor-image {
+        border-color: $higlight-color;
+    }
+
     .actor-image {
         width: 120px;
         height: 179px;
@@ -30,6 +35,8 @@ $color-accent: #56c7d6;
         border: 2px solid $color-accent;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
+
+
     }
 
     h3 {

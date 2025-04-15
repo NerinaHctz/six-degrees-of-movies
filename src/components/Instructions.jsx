@@ -13,6 +13,11 @@ const Instructions = ({ onStart }) => {
             <li><img src='/icon/film.png' alt='Película' />Haz clic en una película de la lista para ver los actores que han actuado en ella.</li>
             <li><img src='/icon/actor.png' alt='Actor' />Haz clic en un actor de la lista para ver sus películas.</li>
             <li><img src='/icon/nexus.png' alt='Nexo' />Encuentra el camino más corto entre el actor de la izquierda y el de la derecha.</li>
+            <br />
+            <ul>Sistema de puntos:
+                <li>* Cada vez que tires los dados la puntuacuión bajará 10 puntos, así que solo podrás tirar los dados un número limitado de veces.</li>
+                <li>* Cada vez que pulses en una tarjeta de actor o de película la puntuación bajará 1 punto.</li>
+            </ul>
         </ul>
         <Button className='instructions-button' onClick={onStart}>Jugar</Button>
     </Container>
