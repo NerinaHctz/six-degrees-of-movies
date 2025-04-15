@@ -27,6 +27,8 @@ const useGameBoard = () => {
         setIsRolling(true)
         setTimeout(() => {
             getRandomActors(selectedActors).then(([randomActor1, randomActor2]) => {
+                console.log('randomActor1:', randomActor1);
+                console.log('randomActor2:', randomActor2);
                 setActor1(randomActor1)
                 setActor2(randomActor2)
                 setSelectedActors([...selectedActors, randomActor1, randomActor2])

@@ -6,7 +6,8 @@ import Title from './common/Title'
 import MovieCard from './MovieCard'
 import '../styles/GameResult.scss'
 
-const GameResult = ({ success, score, selectedMovie, actorsInMovie }) => {
+const GameResult = ({ success, score, selectedMovie, actorsInMovie, actor2 }) => {
+    console.log('actor2 en GameResult:', actor2)
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -57,6 +58,26 @@ const GameResult = ({ success, score, selectedMovie, actorsInMovie }) => {
                                 actors={actorsInMovie}
                                 onActorSelect={() => { }}
                             />
+                        </Container>
+                    )}
+                    {actorsInMovie && actorsInMovie.length > 0 && (
+                        <Container className="actors-list">
+                            <Title level={3}>Actores en la película:</Title>
+                            <ul>
+                                {actorsInMovie.map((actor) => (
+                                    <li
+                                        key={actor.id}
+                                        className={`actor-item ${actor.id === actor2?.id ? 'highlight' : ''}`}
+                                    >
+                                        <img
+                                            src={actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : '/icon/actor.png'}
+                                            alt={actor.name}
+                                            className="actor-image"
+                                        />
+                                        <Paragraph>{actor.name}</Paragraph>
+                                    </li>
+                                ))}
+                            </ul>
                         </Container>
                     )}
                 </Container>

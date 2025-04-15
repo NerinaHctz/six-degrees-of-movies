@@ -27,7 +27,9 @@ const GameBoard = () => {
         onActorSelect,
     } = useGameBoard()
 
-    if (gameOver || score <= 0) return <GameResult success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} />
+    const placeholderImage = '/public/icon/film.png'
+
+    if (gameOver || score <= 0) return <GameResult success={nexusFound} score={score} selectedMovie={selectedMovies[0]} actorsInMovie={actorsInMovie} actor2={actor2} />
 
     return <Container className='game-page'>
         <Container className='game-board'>
@@ -55,10 +57,9 @@ const GameBoard = () => {
                         {movies.map((movie) => (
                             <li key={movie.id} onClick={() => onMovieSelect(movie)}>
                                 <Image
-                                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className='movie-poster'
-                                    defaultSrc='path/to/default-poster.jpg'
+                                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : placeholderImage} alt={movie.title}
+                                    className={`movie-card__poster ${!movie.poster_path ? 'placeholder' : ''}`}
+                                    onError={(e) => (e.target.src = placeholderImage)}
                                 />
                                 {movie.title}
                             </li>
